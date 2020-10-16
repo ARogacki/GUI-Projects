@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
 
+The project is fully functional and finished.
+
 # Example
 
 Picture of working program: https://i.imgur.com/YrSKR1o.png
