@@ -1,0 +1,29 @@
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <div class="siteTitle" [routerLink]="'/home'"><img src="assets/img/logo.png" class="logo"></div>
+    <div class="buttonContainer">
+      <a mat-button [routerLink]="'/report'" class="button">Report Card</a>
+      <a mat-button href="https://edu.p.lodz.pl/" class="button">Wikamp</a>
+      <a mat-button href="https://virtul.p.lodz.pl/virtul/" class="button">Virtul</a>
+      <a mat-button href="https://poczta.p.lodz.pl" class="button">Email</a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-drawer-container class="navigation" autosize>
+  <mat-drawer #drawer class="navigation-container" mode="over">
+    <div class="buttonTopContainer">
+      <a mat-button [routerLink]="'/contact'" class="buttonBlack">Contact</a>
+      <a mat-button [routerLink]="'/admissions'" class="buttonBlack">Admissions</a>
+    </div>
+  </mat-drawer>
+
+
+
+<div class="main-container">
+  <router-outlet></router-outlet>
+</div>
+
+
+</mat-drawer-container>

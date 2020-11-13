@@ -1,0 +1,51 @@
+<div class="center">
+  <div class="innerCenter">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Semester</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab *ngFor="let semester of student.semesters">
+            <h2>Semester progress:</h2>
+            <div class="content">
+              <p>Ects points: {{calculateEcts(semester)}}/{{semester.maxEcts}}</p>
+              <p>Average: {{averageGrade(semester)}}</p>
+            </div>
+            <h2>Subjects:</h2>
+            <ng-template mat-tab-label>{{semester.semesterNumber}}</ng-template>
+            <mat-table *ngIf="semester" [dataSource]="semester.subjects">
+
+              <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                <mat-cell *matCellDef="let subject">{{subject.name}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="ects">
+                <mat-header-cell *matHeaderCellDef>Ects</mat-header-cell>
+                <mat-cell *matCellDef="let subject">{{subject.ects}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="grade">
+                <mat-header-cell *matHeaderCellDef>Grade</mat-header-cell>
+                <mat-cell *matCellDef="let subject">{{subject.grade}}</mat-cell>
+              </ng-container>
+
+              <ng-container matColumnDef="lecturers">
+                <mat-header-cell *matHeaderCellDef>Lecturers</mat-header-cell>
+                <mat-cell *matCellDef="let subject">{{subject.lecturers[0].name}} {{subject.lecturers[0].lastName}}</mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns" class="header"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+      <mat-card-actions class="error">
+        <button mat-button (click)="openDialog()">Report error</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

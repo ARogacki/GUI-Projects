@@ -1,0 +1,23 @@
+
+<div class="container">
+  <mat-card class="card">
+    <mat-card-content>
+      <mat-card-header class="middle">
+        <mat-card-title>Lissajous</mat-card-title>
+      </mat-card-header>
+      <plotly-plot [data]="graph.data" [layout]="graph.layout" class="middle"></plotly-plot>
+      <div class="center">
+        <mat-divider></mat-divider>
+        <p class="options">Value of a: {{a}}</p>
+        <mat-slider min="1" max="6" step="1" [(ngModel)]="a" (input)="updateValueOfA($event)"></mat-slider><br>
+        <p class="options">Value of b: {{b}}</p>
+        <mat-slider min="1" max="6" step="1" [(ngModel)]="b" (input)="updateValueOfB($event)"></mat-slider><br>
+        <p class="options">Phase shift: {{phaseConverted}}°</p>
+        <mat-slider min="0" [max]="maxSlider" [step]="stepSlider" [(ngModel)]="phase" (input)="updatePhase($event)"></mat-slider><br>
+        <button mat-raised-button color="secondary" (click)="changePrecision()">Phase step: {{precisionSlider}}°</button>
+      </div>
+    </mat-card-content>
+</mat-card>
+</div>
+
+

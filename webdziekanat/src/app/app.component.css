@@ -1,0 +1,39 @@
+.buttonContainer{
+  width: 100%;
+  display: flex;
+}
+.buttonTopContainer{
+  height: 100%;
+  display: block;
+}
+.button{
+  flex: 1;
+  font-size: 15px;
+  color: white;
+}
+.buttonBlack{
+  flex: 1;
+  font-size: 15px;
+  color: black;
+  width: 100%;
+}
+.siteTitle{
+  width: 10%;
+  font-style: italic;
+  text-shadow: 2px 2px black;
+  color: white;
+}
+.navigation{
+  height: 100vh;
+}
+.navigation-container{
+}
+.main-container{
+  padding: 15px;
+  font-size: 16px;
+}
+.logo{
+  max-width: 100%;
+  height: auto;
+}
+

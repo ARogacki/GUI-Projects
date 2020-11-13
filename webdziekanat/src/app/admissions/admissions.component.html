@@ -1,0 +1,116 @@
+<div class="center">
+  <div class="innerCenter">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Admissions</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="center">
+        <mat-tab-group>
+          <mat-tab label="Scholarship">
+            <div class="content">
+              <br>
+              <p>
+                <mat-form-field>
+                  <mat-label>Student id</mat-label>
+                  <input matInput value="{{student.id}}">
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field>
+                  <mat-label>Name</mat-label>
+                  <input matInput value="{{student.name}}">
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Last name</mat-label>
+                  <input matInput value="{{student.lastName}}">
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field>
+                  <mat-label>Address</mat-label>
+                  <textarea matInput
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="2"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Postal code</mat-label>
+                  <input matInput>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field>
+                  <mat-label>Email</mat-label>
+                  <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Phone</mat-label>
+                  <input matInput>
+                </mat-form-field>
+              </p>
+              <p>
+                Average for the semester nr {{student.semesters[1].semesterNumber}}:<span class="highlight"> {{averageCurrentSemester(student)}}</span>
+              </p>
+              <br>
+              <button mat-button [routerLink]="'/home'">Submit</button>
+            </div>
+          </mat-tab>
+          <mat-tab label="Accommodation">
+            <div class="content">
+              <br>
+              <p>
+                <mat-form-field>
+                  <mat-label>Student id</mat-label>
+                  <input matInput value="{{student.id}}">
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field>
+                  <mat-label>Name</mat-label>
+                  <input matInput value="{{student.name}}">
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Last name</mat-label>
+                  <input matInput value="{{student.lastName}}">
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field>
+                  <mat-label>Address</mat-label>
+                  <textarea matInput
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="2"
+                            cdkAutosizeMaxRows="2"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Postal code</mat-label>
+                  <input matInput>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-form-field>
+                  <mat-label>Email</mat-label>
+                  <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Phone</mat-label>
+                  <input matInput>
+                </mat-form-field>
+              </p>
+              <p>
+                Expected cost:<span class="highlight"> 500pln/month</span>
+              </p>
+              <br>
+              <button mat-button [routerLink]="'/home'">Submit</button>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+      <mat-card-actions class="error">
+        <button mat-button (click)="openDialog()">Report error</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

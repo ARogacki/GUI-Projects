@@ -1,0 +1,15 @@
+.center{
+  text-align: center;
+}
+.innerCenter{
+  width: 400px;
+  margin: 200px auto 0px;
+  text-align: left;
+}
+.error{
+  color: red;
+}
+
+.content{
+  font-size: 17px;
+}
