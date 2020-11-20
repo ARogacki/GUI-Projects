@@ -1,0 +1,28 @@
+<mat-grid-list cols="8" rowHeight="1:2" class="parentList">
+  <mat-grid-tile [colspan] = 1>
+    <div *ngIf="page" class="pageButtons">
+      <button [disabled]="page.first" mat-raised-button (click)="changePage(-1)"><</button>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan] = 6>
+    <mat-grid-list cols="3" rowHeight="2:1" class="childList">
+      <mat-grid-tile *ngFor="let deadline of pageDeadlines">
+        <mat-card class="card" matRipple>
+          <mat-card-title>{{deadline.deadlineName}}</mat-card-title>
+          <mat-card-subtitle>
+            <span *ngIf="deadline.isOptional">Optional</span>
+            <span *ngIf="!deadline.isOptional">Mandatory</span>
+          </mat-card-subtitle>
+          <mat-card-content>
+            <h2>{{deadline.deadlineDate}}</h2>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan] = 1>
+    <div *ngIf="page" class="pageButtons">
+      <button [disabled]="page.last" mat-raised-button (click)="changePage(1)">></button>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

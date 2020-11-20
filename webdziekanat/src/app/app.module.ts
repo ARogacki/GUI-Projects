@@ -22,6 +22,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import { AdmissionsComponent } from './admissions/admissions.component';
+import { DeadlinesComponent } from './deadlines/deadlines.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { AdmissionsComponent } from './admissions/admissions.component';
     ReportCardComponent,
     ContactComponent,
     ErrorComponent,
-    AdmissionsComponent
+    AdmissionsComponent,
+    DeadlinesComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { AdmissionsComponent } from './admissions/admissions.component';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    TextFieldModule
+    TextFieldModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

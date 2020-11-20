@@ -1,0 +1,19 @@
+.card{
+  width: 70%;
+  height: 80%;
+  background: ghostwhite;
+}
+mat-grid-tile {
+  background: transparent;
+}
+.welcome{
+  margin-top: 5px;
+  text-align: center;
+  font-size: 25px;
+}
+.childList{
+  width: 100%;
+}
+.parentList{
+  display: flex;
+}

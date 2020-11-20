@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {AppComponent} from '../app.component';
 import {WelcomeScreenComponent} from '../welcome-screen/welcome-screen.component';
 import {ReportCardComponent} from '../report-card/report-card.component';
 import {ContactComponent} from '../contact/contact.component';
 import {AdmissionsComponent} from '../admissions/admissions.component';
+import {DeadlinesComponent} from '../deadlines/deadlines.component';
 
 const routes: Routes = [
   {
@@ -23,6 +22,15 @@ const routes: Routes = [
   {
     path: 'admissions',
     component: AdmissionsComponent
+  },
+  {
+    path: 'deadline',
+    component: DeadlinesComponent
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
   }
 ];
 
