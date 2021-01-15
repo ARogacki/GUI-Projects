@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Values.qml</file>
+        <file>DashboardGaugeStyle.qml</file>
+        <file>ControlPanel.qml</file>
+        <file>UserPanel.qml</file>
+        <file>RPMmeterStyle.qml</file>
+        <file>FuelMeterStyle.qml</file>
+        <file>MainMenu.qml</file>
+        <file>Music/MusicMenu.qml</file>
+        <file>Navigation/NavigationMenu.qml</file>
+        <file>Radio/RadioMenu.qml</file>
+        <file>Settings/SettingsMenu.qml</file>
+        <file>Weather/WeatherMenu.qml</file>
+        <file>Details/DetailMenu.qml</file>
+        <file>Music/musicIcon.png</file>
+        <file>Details/detailsIcon.png</file>
+        <file>Navigation/navigationIcon.png</file>
+        <file>Radio/radioIcon.png</file>
+        <file>Settings/settingsIcon.png</file>
+        <file>Weather/weatherIcon.png</file>
+        <file>homeIcon.png</file>
+        <file>Music/startIcon.png</file>
+        <file>Music/stopIcon.png</file>
+        <file>Music/repeatIcon.png</file>
+        <file>Music/volumeIcon.png</file>
+        <file>Music/mutedIcon.png</file>
+        <file>Radio/mutedIcon.png</file>
+        <file>Radio/volumeIcon.png</file>
+        <file>Weather/cloudIcon.png</file>
+        <file>Weather/foggyIcon.png</file>
+    </qresource>
+</RCC>
