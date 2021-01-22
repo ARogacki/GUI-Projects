@@ -12,11 +12,6 @@ Item {
     Plugin {
         id: mapPlugin
         name: "osm" // "mapboxgl", "esri", ...
-        // specify plugin parameters if necessary
-        // PluginParameter {
-        //     name:
-        //     value:
-        // }
     }
 
     Map {

@@ -7,7 +7,7 @@ import Qt.labs.settings 1.0
 import ".."
 
 Item {
-    id: music
+    id: musicMenu
     Settings{
         id: settings
         property string backgroundColor: "transparent"

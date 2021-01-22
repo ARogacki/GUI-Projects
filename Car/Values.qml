@@ -8,8 +8,13 @@ Item {
         property string backgroundColor: "transparent"
     }
 
-    property real kph: control.kph
+    property int gear: control.gear
+    property bool accelerate: control.accelerate
+    //property real kph: control.kph
+    property real kph: 0
     property real rpm: 0
-    property real fuel: 0.8
-    property string backgroundColor: settings.backgroundColor
+    property real fuel: 100
+    property string currentWeather: control.currentWeather
+    property real currentTemperature: control.currentTemperature
+    property string currentHazards: control.currentHazards
 }

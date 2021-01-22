@@ -3,6 +3,7 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Extras 1.4
+import QtQml 2.12
 import Qt.labs.settings 1.0
 
 ApplicationWindow {
@@ -28,7 +29,7 @@ ApplicationWindow {
     }
     UserPanel{
         id: user
-        visible: true
+        visible: false
     }
 
     menuBar: MenuBar {
@@ -96,6 +97,77 @@ ApplicationWindow {
             }
         }
     }
+    Timer {
+        id: gearsTimer
+        interval: 10
+        repeat: true
+        running: true
+        onTriggered:{
+            if(values.gear == 5){
+                if(values.accelerate && values.kph < 100 && values.fuel > 0){
+                    values.kph += 0.6
+                    values.fuel -= 0.003
+                }
+                values.fuel -= 0.0005
+            }
+            else if(values.gear == 4){
+                if(values.accelerate && values.kph < 80 && values.fuel > 0){
+                    values.kph += 0.4
+                    values.fuel -= 0.002
+                }
+                else if(!values.accelerate && values.kph > 80){
+                    values.kph -= 0.3
+                }
+                values.fuel -= 0.0003
+            }
+            else if(values.gear == 3){
+                if(values.accelerate && values.kph < 60 && values.fuel > 0){
+                    values.kph += 0.3
+                    values.fuel -= 0.001
+                }
+                else if(!values.accelerate && values.kph > 60){
+                    values.kph -= 0.2
+                }
+                values.fuel -= 0.0001
+            }
+            else if(values.gear == 2){
+                if(values.accelerate && values.kph < 40 && values.fuel > 0){
+                    values.kph += 0.2
+                    values.fuel -= 0.0005
+                }
+                else if(!values.accelerate && values.kph > 40){
+                    values.kph -= 0.2
+                }
+                values.fuel -= 0.00005
+            }
+            else if(values.gear == 1){
+                if(values.accelerate && values.kph < 20 && values.fuel > 0){
+                    values.kph += 0.2
+                    values.fuel -= 0.0001
+                }
+                else if(!values.accelerate && values.kph > 20){
+                    values.kph -= 0.2
+                }
+                values.fuel -= 0.00001
+            }
+            else if(values.gear == 0){
+                if(values.kph >= 0){
+                    values.kph -= 0.2
+                }
+            }
+            else if(values.gear == -1 && values.kph < 10 && values.fuel > 0){
+                values.kph += 0.2
+                values.fuel -= 0.00001
+            }
+
+            if(values.gear != 0){
+                values.kph -= 0.1
+            }
+            console.log(values.fuel)
+        }
+    }
+
+    //Timer for speed, gas + stop, fuel dependence
 
     /*
     Button{

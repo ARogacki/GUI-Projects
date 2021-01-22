@@ -30,5 +30,8 @@
         <file>Radio/volumeIcon.png</file>
         <file>Weather/cloudIcon.png</file>
         <file>Weather/foggyIcon.png</file>
+        <file>Weather/snowyIcon.png</file>
+        <file>Weather/sunnyIcon.png</file>
+        <file>Weather/rainyIcon.png</file>
     </qresource>
 </RCC>

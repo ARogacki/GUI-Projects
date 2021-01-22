@@ -53,15 +53,17 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             color: settings.value("textColor")
         }
+        /*
         Text{
             id: speed
-            text: "Current speed: " + values.kph.toFixed(0)
+            text: "Current speed: " + values.kph
             font.pointSize: parent.height / 14
             anchors.top: latest.top
             anchors.topMargin: parent.height / 12
             anchors.horizontalCenter: parent.horizontalCenter
             color: settings.value("textColor")
         }
+        */
     }
 
     Button{
