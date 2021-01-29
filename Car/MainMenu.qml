@@ -11,6 +11,7 @@ PathView {
     Settings{
         id: settings
         property string backgroundColor: "transparent"
+        property string textColor: "transparent"
     }
 
     Item{
@@ -25,8 +26,8 @@ PathView {
                 anchors.fill: parent
                 columns: 3
                 rows: 2
-                property double colMulti : grid.width / grid.columns
-                property double rowMulti : grid.height / grid.rows
+                property double colMulti: grid.width / grid.columns
+                property double rowMulti: grid.height / grid.rows
                 function prefWidth(item){
                     return colMulti * item.Layout.columnSpan
                 }
@@ -203,28 +204,31 @@ PathView {
                     running: true
                     onTriggered:{
                         background.color = settings.value("backgroundColor")
+                        clock.color = settings.value("textColor")
+                        date.color = settings.value("textColor")
+                        clock.text = Qt.formatDateTime(new Date(), "hh:mm:ss")
+                        date.text = Qt.formatDateTime(new Date(), "dd.MM.yyyy")
                     }
                 }
             }
         }
-        }
-
-
-
-
+    }
+    Text{
+        id: clock
+        text: Qt.formatDateTime(new Date(), "hh:mm:ss")
+        font.pointSize: parent.height / 20
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        color: settings.textColor
+        minimumPixelSize: 5
+    }
+    Text{
+        id: date
+        text: Qt.formatDateTime(new Date(), "dd.MM.yyyy")
+        font.pointSize: parent.height / 20
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        color: settings.textColor
+        minimumPixelSize: 5
+    }
 }
-
-/*
-DropShadow {
-    id: rectShadow
-    anchors.fill: source
-    cached: true
-    horizontalOffset: 3
-    verticalOffset: 3
-    radius: 8.0
-    samples: 16
-    color: "#80000000"
-    smooth: true
-    source: parent
-}
-*/

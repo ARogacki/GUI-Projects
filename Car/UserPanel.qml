@@ -10,7 +10,7 @@ ApplicationWindow{
     height: 480
     id: thirdScreen
     color: "white"
-    title: qsTr("User panel")
+    title: "User panel"
     Values {
         id: values
     }

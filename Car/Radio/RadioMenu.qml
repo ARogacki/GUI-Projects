@@ -28,11 +28,13 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
                         font.pointSize: parent.height / 14
+                        minimumPixelSize: 5
                         color: settings.textColor
                         text: modelData[0]
                         Text{
                             text: modelData[1].toFixed(2)
                             font.pointSize: parent.font.pointSize / 2
+                            minimumPixelSize: 5
                             anchors.top: parent.bottom
                             anchors.horizontalCenter: parent.horizontalCenter
                             color: parent.color

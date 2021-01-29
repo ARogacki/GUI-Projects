@@ -5,6 +5,7 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Extras 1.4
 import QtQml 2.12
 import Qt.labs.settings 1.0
+import QtGraphicalEffects 1.12
 
 ApplicationWindow {
     width: 640
@@ -12,12 +13,13 @@ ApplicationWindow {
     id: mainScreen
     visible: true
     color: "#000000"
-    title: qsTr("Car dashboard")
+    title: "Dashboard"
 
     Settings{
         id: settings
         property string backgroundColor: "transparent"
         property string textColor: "black"
+        property real fuel: 100
     }
 
     Values {
@@ -32,20 +34,21 @@ ApplicationWindow {
         visible: false
     }
 
+
     menuBar: MenuBar {
         Menu {
-            title: qsTr("Options")
+            title: "Options"
             MenuItem {
-                text: qsTr("Control")
-                onTriggered: control.visible = true;
+                text: "Control"
+                onTriggered: control.visible = true
             }
             MenuItem {
-                text: qsTr("User panel")
-                onTriggered: user.visible = true;
+                text: "User panel"
+                onTriggered: user.visible = true
             }
             MenuItem {
-                text: qsTr("Exit")
-                onTriggered: Qt.quit();
+                text: "Exit"
+                onTriggered: Qt.quit()
             }
         }
     }
@@ -58,6 +61,21 @@ ApplicationWindow {
             id: gaugeRow
             spacing: container.width * 0.02
             anchors.centerIn: parent
+            Image{
+                id: leftIndicator
+                anchors.verticalCenter: parent.verticalCenter
+                height: parent.height/8
+                width: height
+                source: "leftArrow.png"
+                layer {
+                    enabled: true
+                    effect: ColorOverlay {
+                        id: leftIndicatorColor
+                        color: (values.leftIndicatorOn) ? "green" : "gray"
+                    }
+                }
+
+            }
             CircularGauge {
                 id: fuel
                 value: values.fuel
@@ -67,10 +85,13 @@ ApplicationWindow {
                 height: container.height * 0.25
                 style: FuelMeterStyle {
                     id: fuelGaugeStyle
+                    minimumValueAngle: -90
+                    maximumValueAngle: 90
+                    minorTickmark: Rectangle {
+                    }
                     tickmarkLabel: Text {
                         color: "white"
                         visible: styleData.value === 0 || styleData.value === 100
-                        //font.pixelSize: fuelGaugeStyle.toPixels(0.225)
                         text: styleData.value === 0 ? "E" : (styleData.value === 100 ? "F" : "")
                     }
                 }
@@ -95,6 +116,20 @@ ApplicationWindow {
 
                 style: RPMmeterStyle {}
             }
+            Image{
+                id: rightIndicator
+                anchors.verticalCenter: parent.verticalCenter
+                height: parent.height/8
+                width: height
+                source: "rightArrow.png"
+                layer {
+                    enabled: true
+                    effect: ColorOverlay {
+                        id: rightIndicatorColor
+                        color: (values.rightIndicatorOn) ? "green" : "gray"
+                    }
+                }
+            }
         }
     }
     Timer {
@@ -108,7 +143,13 @@ ApplicationWindow {
                     values.kph += 0.6
                     values.fuel -= 0.003
                 }
+                if(values.rpm < 8){
+                    values.rpm += 0.1
+                }
                 values.fuel -= 0.0005
+                if(values.rpm > 0){
+                values.rpm -= 0.05
+                }
             }
             else if(values.gear == 4){
                 if(values.accelerate && values.kph < 80 && values.fuel > 0){
@@ -118,62 +159,88 @@ ApplicationWindow {
                 else if(!values.accelerate && values.kph > 80){
                     values.kph -= 0.3
                 }
+                if(values.rpm < 6){
+                    values.rpm += 0.05
+                }
                 values.fuel -= 0.0003
+                if(values.rpm > 0){
+                values.rpm -= 0.02
+                }
             }
             else if(values.gear == 3){
                 if(values.accelerate && values.kph < 60 && values.fuel > 0){
                     values.kph += 0.3
                     values.fuel -= 0.001
                 }
+                if(values.rpm < 5){
+                    values.rpm += 0.03
+                }
                 else if(!values.accelerate && values.kph > 60){
                     values.kph -= 0.2
                 }
                 values.fuel -= 0.0001
+                if(values.rpm > 0){
+                values.rpm -= 0.01
+                }
+
             }
             else if(values.gear == 2){
                 if(values.accelerate && values.kph < 40 && values.fuel > 0){
                     values.kph += 0.2
                     values.fuel -= 0.0005
                 }
+                if(values.rpm < 3){
+                    values.rpm += 0.02
+                }
                 else if(!values.accelerate && values.kph > 40){
                     values.kph -= 0.2
                 }
                 values.fuel -= 0.00005
+                if(values.rpm > 0){
+                values.rpm -= 0.01
+                }
+
             }
             else if(values.gear == 1){
                 if(values.accelerate && values.kph < 20 && values.fuel > 0){
                     values.kph += 0.2
                     values.fuel -= 0.0001
                 }
+                if(values.rpm < 2){
+                    values.rpm += 0.01
+                }
                 else if(!values.accelerate && values.kph > 20){
                     values.kph -= 0.2
                 }
                 values.fuel -= 0.00001
+                if(values.rpm > 0){
+                values.rpm -= 0.005
+                }
+
             }
             else if(values.gear == 0){
                 if(values.kph >= 0){
                     values.kph -= 0.2
                 }
+                if(values.rpm > 0){
+                values.rpm -= 0.01
+                }
             }
             else if(values.gear == -1 && values.kph < 10 && values.fuel > 0){
                 values.kph += 0.2
                 values.fuel -= 0.00001
+                if(values.rpm < 2){
+                    values.rpm += 0.01
+                }
+                if(values.rpm > 0){
+                values.rpm -= 0.005
+                }
             }
 
             if(values.gear != 0){
                 values.kph -= 0.1
             }
-            console.log(values.fuel)
+            settings.fuel = values.fuel
         }
     }
-
-    //Timer for speed, gas + stop, fuel dependence
-
-    /*
-    Button{
-        text: qsTr("Test");
-        anchors.horizontalCenter: parent.horizontalCenter;
-        anchors.verticalCenter: parent.verticalCenter;
-    }
-    */
 }

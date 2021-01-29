@@ -33,11 +33,13 @@ Item {
                         anchors.top: parent.top
                         anchors.topMargin: parent.height / 12
                         font.pointSize: parent.height / 14
+                        minimumPixelSize: 5
                         text: modelData[0]
                         color: settings.value("textColor")
                         Text{
                             text: modelData[1]
                             font.pointSize: parent.font.pointSize / 3
+                            minimumPixelSize: 5
                             anchors.top: parent.bottom
                             anchors.horizontalCenter: parent.horizontalCenter
                             color: parent.color

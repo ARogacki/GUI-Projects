@@ -33,5 +33,9 @@
         <file>Weather/snowyIcon.png</file>
         <file>Weather/sunnyIcon.png</file>
         <file>Weather/rainyIcon.png</file>
+        <file>leftArrow.png</file>
+        <file>rightArrow.png</file>
+        <file>highTemp.png</file>
+        <file>lowTemp.png</file>
     </qresource>
 </RCC>
