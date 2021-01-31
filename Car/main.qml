@@ -100,7 +100,7 @@ ApplicationWindow {
                 id: speedometer
                 value: values.kph
                 anchors.verticalCenter: parent.verticalCenter
-                maximumValue: 240
+                maximumValue: 160
                 width: height
                 height: container.height * 0.5
 

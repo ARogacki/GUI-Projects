@@ -96,6 +96,7 @@ ApplicationWindow{
                     anchors.top: refuel.top
                     text: "Turn left"
                     onClicked: {
+                        values.rightIndicatorOn = false
                         if(values.leftIndicatorOn){
                             values.leftIndicatorOn = false
                         }
@@ -127,6 +128,7 @@ ApplicationWindow{
                     anchors.top: refuel.top
                     text: "Turn right"
                     onClicked: {
+                        values.leftIndicatorOn = false
                         if(values.rightIndicatorOn){
                             values.rightIndicatorOn = false
                         }
